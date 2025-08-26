@@ -1,62 +1,45 @@
-# Use Node.js 20 Alpine for smaller image size
+# --- Builder stage ---
 FROM node:20-alpine AS builder
-
-# Set working directory
 WORKDIR /app
 
-# Copy package files
+# Copy lockfiles first for better caching
 COPY package*.json ./
 COPY tsconfig.json ./
 
-# Install dependencies
-RUN npm ci
+# Install deps WITHOUT running lifecycle scripts (so 'prepare' won't run yet)
+RUN npm ci --ignore-scripts
 
-# Copy source files
-COPY src/ ./src/
-
-# Build the application
+# Now copy sources and build
+COPY src ./src
 RUN npm run build
 
-# Production stage
+# --- Production stage ---
 FROM node:20-alpine
+ENV NODE_ENV=production
+ENV AISEARCHAPI_KEY=as-dev-your-api-key-here
 
-# Install dumb-init for proper signal handling
+# Small init for proper signal handling
 RUN apk add --no-cache dumb-init
 
-# Create non-root user
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S nodejs -u 1001
-
-# Set working directory
+# Non-root user
+RUN addgroup -g 1001 -S nodejs && adduser -S nodejs -u 1001
 WORKDIR /app
 
-# Copy package files
+# Copy only package files and install prod deps, skip scripts
 COPY package*.json ./
+RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
 
-# Install only production dependencies
-RUN npm ci --only=production && \
-    npm cache clean --force
-
-# Copy built application from builder stage
+# Copy built app
 COPY --from=builder /app/dist ./dist
 
-# Change ownership to nodejs user
+# Permissions
 RUN chown -R nodejs:nodejs /app
-
-# Switch to non-root user
 USER nodejs
 
-# Use dumb-init to handle signals properly
+# Entrypoint & command
 ENTRYPOINT ["dumb-init", "--"]
-
-# Default command
 CMD ["node", "dist/index.js"]
 
-# Health check - list tools to verify server is responsive
+# Healthcheck (adjust if your app doesn't support --list-tools)
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD node dist/index.js --list-tools || exit 1
-
-# Labels for documentation
-LABEL maintainer="AI Search API <admin@aisearchapi.io>" \
-      description="MCP server for AI Search API" \
-      version="1.0.0"
