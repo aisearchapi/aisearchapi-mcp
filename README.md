@@ -59,23 +59,8 @@ AISEARCHAPI_VERBOSE=false
 ---
 
 ## 🛠️ Available Tools
-
-### `aisearch-search`  
-Perform contextual semantic searches.  
 ```bash
-Use aisearch-search to find renewable energy benefits
-```
-
-### `aisearch-balance`  
-Check credits and balance.  
-```bash
-Check my AI Search API balance
-```
-
-### `aisearch-clear-context`  
-Clear stored conversation history.  
-```bash
-Clear the search context
+npx @modelcontextprotocol/inspector node dist/index.js
 ```
 
 ---
