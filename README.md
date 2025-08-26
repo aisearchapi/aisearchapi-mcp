@@ -1,26 +1,38 @@
-# AI Search API MCP Server
+# 🤖 AI Search API MCP Server
 
-A Model Context Protocol (MCP) server that integrates AI Search API capabilities into Claude Desktop and other MCP-compatible applications. This server provides intelligent search functionality with context awareness, semantic understanding, and source citations.
+[![npm version](https://badge.fury.io/js/aisearchapi-mcp.svg)](https://www.npmjs.com/package/aisearchapi-mcp)
+[![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933.svg?logo=node.js&logoColor=white)](https://nodejs.org/)
 
-## Features
+A **Model Context Protocol (MCP) server** that integrates the [AI Search API](https://aisearchapi.io/) into **Claude Desktop** and other MCP-compatible apps.  
+Bring **semantic search, context awareness, and source citations** directly into your AI workflows.
 
-- **Intelligent Search**: Leverage advanced AI embeddings for semantic search with context awareness
-- **Context Management**: Maintain conversation history for contextual searches
-- **Multiple Response Formats**: Support for both markdown and plain text responses
-- **Source Citations**: Get reliable sources for all search results
-- **Balance Monitoring**: Track API usage and remaining credits
-- **Full TypeScript Support**: Type-safe implementation with excellent IDE support
+👉 Get started now:  
+- [🆕 Sign Up](https://app.aisearchapi.io/join)  
+- [🔑 Log In](https://app.aisearchapi.io/login)  
+- [📊 Dashboard](https://app.aisearchapi.io/dashboard) (manage your API key)  
 
-## Installation
+---
 
-### From npm
+## ✨ Features
 
+- 🔍 **Intelligent Semantic Search** – Natural language search with embeddings  
+- 💬 **Context Management** – Keep or clear conversation history  
+- 📝 **Flexible Responses** – Markdown or plain text output  
+- 📚 **Source Citations** – Reliable references included  
+- 📊 **Balance Monitoring** – Track credits in real time  
+- ⚡ **TypeScript Support** – Strong typing & IDE hints  
+
+---
+
+## 📦 Installation
+
+From npm (recommended):  
 ```bash
 npm install -g aisearchapi-mcp
 ```
 
-### From Source
-
+From source:  
 ```bash
 git clone https://github.com/aisearchapi/aisearchapi-mcp.git
 cd aisearchapi-mcp
@@ -28,35 +40,25 @@ npm install
 npm run build
 ```
 
-## Configuration
+---
 
-### 1. Get an API Key
+## 🔑 Configuration
 
-Sign up for an API key at [aisearchapi.io](https://aisearchapi.io)
+### 1. Get API Key  
+Create your account and copy your key:  
+- [Join](https://app.aisearchapi.io/join) | [Login](https://app.aisearchapi.io/login) | [Dashboard](https://app.aisearchapi.io/dashboard)
 
-### 2. Set Environment Variables
-
-Create a `.env` file in the project root:
-
+### 2. Environment Variables  
+`.env` file:  
 ```env
-# Required
-AISEARCHAPI_KEY=as-dev-your-api-key-here
-
-# Optional
+AISEARCHAPI_KEY=your-api-key-here
 AISEARCHAPI_BASE_URL=https://api.aisearchapi.io
 AISEARCHAPI_TIMEOUT=30000
 AISEARCHAPI_VERBOSE=false
 ```
 
-### 3. Configure Claude Desktop
-
-Add the server to your Claude Desktop configuration file:
-
-**macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
-**Windows**: `%APPDATA%/Claude/claude_desktop_config.json`
-**Linux**: `~/.config/claude/claude_desktop_config.json`
-
-#### Global Installation Configuration
+### 3. Configure Claude Desktop  
+Edit `claude_desktop_config.json` and add:
 
 ```json
 {
@@ -65,279 +67,129 @@ Add the server to your Claude Desktop configuration file:
       "command": "npx",
       "args": ["-y", "aisearchapi-mcp"],
       "env": {
-        "AISEARCHAPI_KEY": "as-dev-your-api-key-here"
+        "AISEARCHAPI_KEY": "your-api-key-here"
       }
     }
   }
 }
 ```
 
-#### Local Installation Configuration
+For advanced setups: see [docs](https://docs.aisearchapi.io/).
 
-```json
-{
-  "mcpServers": {
-    "aisearchapi": {
-      "command": "node",
-      "args": ["/absolute/path/to/aisearchapi-mcp/dist/index.js"],
-      "env": {
-        "AISEARCHAPI_KEY": "as-dev-your-api-key-here"
-      }
-    }
-  }
-}
+---
+
+## 🛠️ Available Tools
+
+### `aisearch-search`  
+Perform contextual semantic searches.  
+```bash
+Use aisearch-search to find renewable energy benefits
 ```
 
-#### Advanced Configuration with Options
-
-```json
-{
-  "mcpServers": {
-    "aisearchapi": {
-      "command": "node",
-      "args": ["/path/to/aisearchapi-mcp/dist/index.js"],
-      "env": {
-        "AISEARCHAPI_KEY": "as-dev-your-api-key-here",
-        "AISEARCHAPI_BASE_URL": "https://api.aisearchapi.io",
-        "AISEARCHAPI_TIMEOUT": "60000",
-        "AISEARCHAPI_VERBOSE": "true"
-      }
-    }
-  }
-}
-```
-
-## Available Tools
-
-### 1. `aisearch-search`
-
-Performs AI-powered searches with semantic understanding and context awareness.
-
-**Parameters:**
-- `prompt` (required): The main search query
-- `use_context` (optional): Include conversation history for context
-- `additional_context` (optional): Provide explicit context messages
-- `response_type` (optional): "markdown" or "text" format
-- `include_sources` (optional): Include source URLs in response
-- `include_timing` (optional): Include processing time metrics
-
-**Example Usage in Claude:**
-```
-Use aisearch-search to find information about renewable energy benefits
-```
-
-### 2. `aisearch-balance`
-
-Check your AI Search API account balance and available credits.
-
-**Parameters:**
-- `format` (optional): "detailed" or "simple" response format
-
-**Example Usage in Claude:**
-```
+### `aisearch-balance`  
+Check credits and balance.  
+```bash
 Check my AI Search API balance
 ```
 
-### 3. `aisearch-clear-context`
-
-Clear the conversation context history when starting new topics.
-
-**Example Usage in Claude:**
-```
+### `aisearch-clear-context`  
+Clear stored conversation history.  
+```bash
 Clear the search context
 ```
 
-## Command Line Usage
+---
 
-### List Available Tools
+## 💻 Command Line Usage
 
+List tools:  
 ```bash
 node dist/index.js --list-tools
 ```
 
-### Check API Balance
-
+Check balance:  
 ```bash
 node dist/index.js --check-balance
 ```
 
-### Start MCP Server
-
+Run server:  
 ```bash
 node dist/index.js
 ```
 
-## Usage Examples in Claude
+---
 
-### Basic Search
+## 📚 Examples in Claude
 
-```
-Search for the latest developments in quantum computing using aisearch
-```
+- **Basic search:**  
+  `Search for latest developments in quantum computing using aisearch`  
 
-### Contextual Search
+- **Contextual search:**  
+  `Use aisearch to find info about solar panels for homes`  
 
-```
-Use aisearch to find information about solar panels. I'm interested in residential installations and cost effectiveness.
-```
+- **Balance check:**  
+  `What's my AI Search API balance?`  
 
-### Search with Previous Context
+---
 
-```
-Now search for installation requirements, using the context from our previous discussion
-```
+## ⚠️ Error Codes
 
-### Check Balance
+| Code | Meaning | Fix |
+|------|---------|-----|
+| 401 | Unauthorized | Invalid key → [Get key](https://app.aisearchapi.io/dashboard) |
+| 429 | Too Many Requests | Slow down or add retry logic |
+| 433 | Quota Exceeded | Buy credits / upgrade |
+| 500 | Server Error | Try again later |
+| 503 | Service Unavailable | Temporary downtime |
 
-```
-What's my current AI Search API balance?
-```
+---
 
-## Environment Variables
-
-| Variable | Description | Default | Required |
-|----------|-------------|---------|----------|
-| `AISEARCHAPI_KEY` | Your AI Search API key | - | Yes |
-| `AISEARCHAPI_BASE_URL` | API base URL | `https://api.aisearchapi.io` | No |
-| `AISEARCHAPI_TIMEOUT` | Request timeout in milliseconds | `30000` | No |
-| `AISEARCHAPI_VERBOSE` | Enable verbose logging | `false` | No |
-
-## Development
-
-### Building from Source
+## 🔧 Development
 
 ```bash
-# Clone the repository
 git clone https://github.com/aisearchapi/aisearchapi-mcp.git
 cd aisearchapi-mcp
-
-# Install dependencies
 npm install
-
-# Build the project
 npm run build
-
-# Run in development mode
 npm run dev
 ```
 
-### Project Structure
-
-```
-aisearchapi-mcp/
-├── src/
-│   └── index.ts          # Main server implementation
-├── dist/                 # Compiled JavaScript (generated)
-├── package.json
-├── tsconfig.json
-├── README.md
-├── .env.example
-└── LICENSE
+Test locally:  
+```bash
+echo '{"jsonrpc":"2.0","method":"tools/list","id":1}' | node dist/index.js
 ```
 
-### Testing Locally
+---
 
-1. Build the project:
-   ```bash
-   npm run build
-   ```
+## 🛡️ Best Practices
 
-2. Test with stdio:
-   ```bash
-   echo '{"jsonrpc":"2.0","method":"tools/list","id":1}' | node dist/index.js
-   ```
+- Clear context when switching topics  
+- Use markdown output for richer UI  
+- Monitor credits regularly  
+- Secure your API key with env vars  
 
-3. Test specific tools:
-   ```bash
-   node dist/index.js --list-tools
-   node dist/index.js --check-balance
-   ```
+---
 
-## Error Handling
+## 📚 Resources
 
-The server provides detailed error messages for common issues:
+- [AI Search API Homepage](https://aisearchapi.io/)  
+- [Join](https://app.aisearchapi.io/join) | [Login](https://app.aisearchapi.io/login) | [Dashboard](https://app.aisearchapi.io/dashboard)  
+- [Docs](https://docs.aisearchapi.io/)  
+- [npm package](https://www.npmjs.com/package/aisearchapi-mcp)  
+- [Issues](https://github.com/aisearchapi/aisearchapi-mcp/issues)  
 
-- **Invalid API Key**: Check your `AISEARCHAPI_KEY` environment variable
-- **Rate Limiting**: The server respects API rate limits
-- **Timeout Errors**: Adjust `AISEARCHAPI_TIMEOUT` if needed
-- **Low Balance**: Warnings when credits are running low
+---
 
-## Troubleshooting
+## 🎉 Start Now
 
-### Server Not Starting
+```bash
+npm install -g aisearchapi-mcp
+```
 
-1. Verify API key is set:
-   ```bash
-   echo $AISEARCHAPI_KEY
-   ```
+Then configure Claude Desktop and start searching with **AI Search API MCP Server**.  
+👉 [Sign up today](https://app.aisearchapi.io/join) and unlock semantic search in Claude Desktop.  
 
-2. Check Node.js version (requires 18+):
-   ```bash
-   node --version
-   ```
+---
 
-3. Ensure proper build:
-   ```bash
-   npm run clean
-   npm run build
-   ```
-
-### Claude Desktop Not Finding Server
-
-1. Verify configuration file location
-2. Use absolute paths in configuration
-3. Restart Claude Desktop after config changes
-4. Check Claude Desktop logs for errors
-
-### API Errors
-
-- **401 Unauthorized**: Invalid API key
-- **429 Too Many Requests**: Rate limit exceeded
-- **433 Quota Exceeded**: Account credits depleted
-
-## Best Practices
-
-1. **Context Management**: Clear context when switching topics to avoid confusion
-2. **Response Format**: Use markdown for rich formatting, text for plain output
-3. **Balance Monitoring**: Check balance regularly to avoid service interruption
-4. **Error Recovery**: The server includes automatic retry logic for transient failures
-
-## Security Considerations
-
-- Never commit your API key to version control
-- Use environment variables for sensitive configuration
-- Rotate API keys regularly
-- Monitor usage for unusual activity
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit issues and pull requests.
-
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a pull request
-
-## License
-
-MIT License - see [LICENSE](LICENSE) file for details
-
-## Support
-
-- **Email**: admin@aisearchapi.io
-- **Documentation**: [docs.aisearchapi.io](https://docs.aisearchapi.io)
-- **Issues**: [GitHub Issues](https://github.com/aisearchapi/aisearchapi-mcp/issues)
-
-## Related Projects
-
-- [AI Search API Client](https://github.com/aisearchapi/aisearchapi-js)
-- [Model Context Protocol](https://github.com/anthropics/model-context-protocol)
-
-## Changelog
-
-### Version 1.0.0
-- Initial release with search, balance, and context management tools
-- Full TypeScript support
-- Comprehensive error handling
-- Context-aware searching capabilities
+### 🔍 SEO Keywords  
+*AI Search API MCP server, Claude Desktop semantic search, context-aware AI MCP, AI Search API Node.js MCP, AI Search API key, MCP integration with Claude*
