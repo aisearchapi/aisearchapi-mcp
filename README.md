@@ -183,7 +183,7 @@ echo '{"jsonrpc":"2.0","method":"tools/list","id":1}' | node dist/index.js
 npm install -g aisearchapi-mcp
 ```
 
-Then configure Claude Desktop and start searching with **AI Search API MCP Server**.  
+Then configure your inspector and start searching with **AI Search API MCP Server**.  
 👉 [Sign up today](https://app.aisearchapi.io/join) and unlock semantic search in Claude Desktop.  
 
 ---
