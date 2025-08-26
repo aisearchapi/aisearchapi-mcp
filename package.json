@@ -1,0 +1,57 @@
+{
+  "name": "aisearchapi-mcp",
+  "version": "1.0.0",
+  "description": "Model Context Protocol server for AI Search API - Provides intelligent search capabilities with context awareness and semantic understanding",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "aisearchapi-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "clean": "rm -rf dist",
+    "prepare": "npm run build",
+    "list-tools": "node dist/index.js --list-tools",
+    "check-balance": "node dist/index.js --check-balance"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ai",
+    "search",
+    "aisearchapi",
+    "llm",
+    "embeddings",
+    "semantic-search",
+    "claude",
+    "assistant"
+  ],
+  "author": "AI Search API",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aisearchapi/aisearchapi-mcp"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "aisearchapi-client": "^1.0.7",
+    "dotenv": "^16.4.5",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@types/yargs": "^17.0.33",
+    "tsx": "^4.7.0",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
