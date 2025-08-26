@@ -57,25 +57,6 @@ AISEARCHAPI_TIMEOUT=30000
 AISEARCHAPI_VERBOSE=false
 ```
 
-### 3. Configure Claude Desktop  
-Edit `claude_desktop_config.json` and add:
-
-```json
-{
-  "mcpServers": {
-    "aisearchapi": {
-      "command": "npx",
-      "args": ["-y", "aisearchapi-mcp"],
-      "env": {
-        "AISEARCHAPI_KEY": "your-api-key-here"
-      }
-    }
-  }
-}
-```
-
-For advanced setups: see [docs](https://docs.aisearchapi.io/).
-
 ---
 
 ## 🛠️ Available Tools
