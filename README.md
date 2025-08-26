@@ -73,9 +73,6 @@ Edit `claude_desktop_config.json` and add:
   }
 }
 ```
-
-For advanced setups: see [docs](https://docs.aisearchapi.io/).
-
 ---
 
 ## 🛠️ Available Tools
