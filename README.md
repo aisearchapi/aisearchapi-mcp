@@ -4,7 +4,7 @@
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933.svg?logo=node.js&logoColor=white)](https://nodejs.org/)
 
-A **Model Context Protocol (MCP) server** that integrates the [AI Search API](https://aisearchapi.io/) into **Claude Desktop** and other MCP-compatible apps.  
+A **Model Context Protocol (MCP) server** that integrates the [AI Search API](https://aisearchapi.io/) into MCP-compatible apps.  
 Bring **semantic search, context awareness, and source citations** directly into your AI workflows.
 
 👉 Get started now:  
@@ -56,43 +56,11 @@ AISEARCHAPI_BASE_URL=https://api.aisearchapi.io
 AISEARCHAPI_TIMEOUT=30000
 AISEARCHAPI_VERBOSE=false
 ```
-
-### 3. Configure Claude Desktop  
-Edit `claude_desktop_config.json` and add:
-
-```json
-{
-  "mcpServers": {
-    "aisearchapi": {
-      "command": "npx",
-      "args": ["-y", "aisearchapi-mcp"],
-      "env": {
-        "AISEARCHAPI_KEY": "your-api-key-here"
-      }
-    }
-  }
-}
-```
 ---
 
 ## 🛠️ Available Tools
-
-### `aisearch-search`  
-Perform contextual semantic searches.  
 ```bash
-Use aisearch-search to find renewable energy benefits
-```
-
-### `aisearch-balance`  
-Check credits and balance.  
-```bash
-Check my AI Search API balance
-```
-
-### `aisearch-clear-context`  
-Clear stored conversation history.  
-```bash
-Clear the search context
+npx @modelcontextprotocol/inspector node dist/index.js
 ```
 
 ---
@@ -113,19 +81,6 @@ Run server:
 ```bash
 node dist/index.js
 ```
-
----
-
-## 📚 Examples in Claude
-
-- **Basic search:**  
-  `Search for latest developments in quantum computing using aisearch`  
-
-- **Contextual search:**  
-  `Use aisearch to find info about solar panels for homes`  
-
-- **Balance check:**  
-  `What's my AI Search API balance?`  
 
 ---
 
@@ -182,11 +137,8 @@ echo '{"jsonrpc":"2.0","method":"tools/list","id":1}' | node dist/index.js
 ```bash
 npm install -g aisearchapi-mcp
 ```
-
-Then configure Claude Desktop and start searching with **AI Search API MCP Server**.  
-👉 [Sign up today](https://app.aisearchapi.io/join) and unlock semantic search in Claude Desktop.  
-
+Then configure your inspector and start searching with **AI Search API MCP Server**.  
 ---
 
 ### 🔍 SEO Keywords  
-*AI Search API MCP server, Claude Desktop semantic search, context-aware AI MCP, AI Search API Node.js MCP, AI Search API key, MCP integration with Claude*
+*AI Search API MCP server, semantic search, context-aware AI MCP, AI Search API Node.js MCP, AI Search API key, MCP integration*
