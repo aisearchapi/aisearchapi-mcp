@@ -1,6 +1,6 @@
 {
   "name": "aisearchapi-mcp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Model Context Protocol server for AI Search API - Provides intelligent search capabilities with context awareness and semantic understanding",
   "type": "module",
   "main": "./dist/index.js",
