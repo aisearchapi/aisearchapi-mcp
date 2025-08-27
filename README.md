@@ -58,10 +58,26 @@ AISEARCHAPI_VERBOSE=false
 ```
 ---
 
-## 🛠️ Available Tools
+## 🛠️ Configure Claude for Desktop
+First of all, make sure you download claude code:
 ```bash
-npx @modelcontextprotocol/inspector node dist/index.js
+npm install -g @anthropic-ai/claude-code
 ```
+
+Make sure you go through the authorization process in order to get access to Claude Code.
+
+---
+After ensuring that **claude-code** is working, this is how you would set up your local mcp:
+```bash
+claude mcp add aisearchapi "npx -y aisearchapi-mcp" --env API_KEY=<YOUR-API-KEY>
+```
+After executing this, in order to ensure everything is added correctly, you could just type:
+```bash
+> claude mcp list                                                                                 
+Checking MCP server health...
+aisearchapi: npx -y aisearchapi-mcp  - ✓ Connected
+```
+Now you are ready to go!
 
 ---
 
@@ -106,11 +122,6 @@ npm run build
 npm run dev
 ```
 
-Test locally:  
-```bash
-echo '{"jsonrpc":"2.0","method":"tools/list","id":1}' | node dist/index.js
-```
-
 ---
 
 ## 🛡️ Best Practices
@@ -137,7 +148,7 @@ echo '{"jsonrpc":"2.0","method":"tools/list","id":1}' | node dist/index.js
 ```bash
 npm install -g aisearchapi-mcp
 ```
-Then configure your inspector and start searching with **AI Search API MCP Server**.  
+Then configure your Claude Desktop and start searching with **AI Search API MCP Server**.  
 ---
 
 ### 🔍 SEO Keywords  
