@@ -140,6 +140,7 @@ npm run dev
 - [Docs](https://docs.aisearchapi.io/)  
 - [npm package](https://www.npmjs.com/package/aisearchapi-mcp)  
 - [Issues](https://github.com/aisearchapi/aisearchapi-mcp/issues)  
+- [Blog Posts](https://aisearchapi.io/blog/)
 
 ---
 
